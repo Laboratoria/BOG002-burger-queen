@@ -13,7 +13,7 @@
 
 ## 1. Preámbulo
 
-[React](https://es.reactjs.org/), [Angular](https://angular.io/) y [Vue](https://vuejs.org/)
+[React](https://es.reactjs.org/) y [Angular](https://angular.io/) 
 son algunos de los _frameworks_ y _librerías_ de JavaScript más utilizados por
 lxs desarrolladorxs alrededor del mundo, y hay una razón para eso.
 En el contexto del navegador, [_mantener la interfaz sincronizada con el estado
