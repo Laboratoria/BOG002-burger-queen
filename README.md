@@ -183,7 +183,6 @@ A continuación puedes ver los objetivos de aprendizaje de este proyecto:
 
 ## 4. Consideraciones generales
 
-Este proyecto se debe "resolver" de forma individual.
 
 Trabaja en una historia hasta terminarla antes de pasar a la siguiente. Trabaja
 hasta la historia que puedas en el tiempo especificado.
@@ -191,7 +190,7 @@ hasta la historia que puedas en el tiempo especificado.
 La lógica del proyecto debe estar implementada completamente en JavaScript
 (ES6+), HTML y CSS y empaquetada de manera automatizada.
 En este proyecto Sí está permitido usar librerías o frameworks
-(debes elegir entre [React](https://es.reactjs.org/), [Vue](https://vuejs.org/) o
+(debes elegir entre [React](https://es.reactjs.org/) o
 [Angular](https://angular.io/)).
 
 La aplicación debe ser un _Single Page App_. Los pedidos los tomaremos desde una
