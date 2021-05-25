@@ -96,7 +96,7 @@ costo total.
 ## 3. Objetivos de aprendizaje
 
 El objetivo principal de este proyecto es aprender a construir una _interfaz web_
-usando el _framework_ elegido (React, Vue o Angular). Todos estos frameworks de
+usando el _framework_ elegido (React o Angular). Todos estos frameworks de
 Front-end atacan el mismo problema: **cómo mantener la interfaz y el estado sincronizados**.
 Así que esta experiencia espera familiarizarte con el concepto de _estado de pantalla_,
 y cómo cada cambio sobre el estado se va a ir reflejando en la interfaz (por ejemplo,
