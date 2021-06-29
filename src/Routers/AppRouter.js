@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cocina from "../views/Cocina";
-import { Inicio } from "../views/Inicio";
+import Inicio  from "../views/Inicio";
 import Mesero from "../views/Mesero";
 import NotFound from "../views/NotFound";
 
