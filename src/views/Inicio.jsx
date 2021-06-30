@@ -8,7 +8,7 @@ import { Button } from "@material-ui/core";
  const Inicio  = () => {
   const classes = Styles();
   return (
-        <div className={classes.root}>
+        <div >
         <Link to="/mesero">
           <Button
             variant="contained"

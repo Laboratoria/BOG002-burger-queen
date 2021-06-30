@@ -22,11 +22,8 @@ const Styles = makeStyles(theme =>({
     button: {      
       backgroundColor: "#C62020",
     marginTop: "12px"
-  },
-  rootM: {
-    backgroundColor: "#E5E5E5",
-    height: "100vh",      
-  },
+  },    
+ 
   form: {
     '& .MuiFormControl-form':{
       with: "90%",
@@ -34,10 +31,13 @@ const Styles = makeStyles(theme =>({
     },
     flex:{
     display: "flex",
+    flexDirection:"row",
     justifyContent: "space-evenly",
-    alignItems: "center",
-   
-    }
+    alignItems: "center",   
+    },
+input:{
+  marginTop: "12px"
+}
   
       
     },

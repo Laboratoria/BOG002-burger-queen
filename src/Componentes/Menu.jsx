@@ -1,12 +1,7 @@
-import React from 'react'
-import FormMenu from './FormMenu'
+import ListaMenu from "../Componentes/ListaMenu"
 
-export default function Menu (){
+export const Menu = () => {
     return (
-        <FormMenu />
-            
-        
+       <div></div>
     )
 }
-
-
