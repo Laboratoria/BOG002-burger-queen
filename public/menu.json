@@ -1,19 +1,20 @@
-[{
-  "desayuno": {
-    "Café americano": {
-      "precio": 5
+[
+  {
+    "desayuno": {
+      "Café americano": {
+        "precio": 5
+      },
+      "Café con leche": {
+        "precio": 7
+      },
+      "Sandwich de jamón y queso": {
+        "precio": 10
+      },
+      "Jugo de frutas natural": {
+        "precio": 7
+      }
     },
-    "Café con leche": {
-      "precio": 7
-    },
-    "Sandwich de jamón y queso": {
-      "precio": 10
-    },
-    "Jugo de frutas natural": {
-      "precio": 7
-    }
-  },
-  "almuerzo": {
+    "almuerzo": {
       "Hamburguesa simple": {
         "precio": 10,
         "proteina1": "pollo",
@@ -26,37 +27,38 @@
         "proteina1": "pollo",
         "proteina2": "carne",
         "proteina3": "vegetariana"
-      }
-  },
-  "extras":{
-      "huevo":{
+      },
+      "extras": {
+        "huevo": {
           "precio": 1
-      },
-      "queso":{
+        },
+        "queso": {
           "precio": 1
+        }
       }
-  },
-    "acompañamientos":{
-      "Papas fritas" : {
-        "precio" : 5
+    },
+
+    "acompañamientos": {
+      "Papas fritas": {
+        "precio": 5
       },
-      "Aros de cebolla" : {
-        "price" : 5
-      }     
-  },
-    "bebidas" : {
-      "Agua 500ml" : {
-        "precio" : 5
+      "Aros de cebolla": {
+        "price": 5
+      }
+    },
+    "bebidas": {
+      "Agua 500ml": {
+        "precio": 5
       },
-      "Agua 750ml" : {
-        "precio" : 7
+      "Agua 750ml": {
+        "precio": 7
       },
-      "Gaseosa 500ml" : {
-        "precio" : 7
+      "Gaseosa 500ml": {
+        "precio": 7
       },
-      "Gaseosa 750ml" : {
-        "precio" : 10
-      }        
+      "Gaseosa 750ml": {
+        "precio": 10
+      }
     }
   }
 ]
