@@ -1,20 +1,18 @@
 
-import Form from "../layout/Form";
-import Input from "../Controles/Input";
+import { List } from '@material-ui/core';
 
 
 
 
-const FormMenu = () => {
+const FormMenu = (props) => {
+  const {FormMenu}
     
   return (
     <div>
-    
-      <Form>
-        <Input  label="Cliente" Name="cliente" />
+    <List>
 
-        <Input  label="Mesa" Name="mesa" />
-      </Form>
+    </List>
+      
       </div>
 
     

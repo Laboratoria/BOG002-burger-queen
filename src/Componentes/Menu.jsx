@@ -1,49 +1,41 @@
 import React, { useEffect, useState } from "react";
-import FormMenu from "./FormMenu";
-import { Button, Grid } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Styles from "../App.Styles";
 
 const Menu = () => {
-  const classes = Styles();
   const [menu, setMenu] = useState([]);
+  const classes = Styles();
   useEffect(() => {
     fetch("./menu.json")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setMenu(data[0]);
       });
   }, []);
 
   return (
     <div>
-        
-        <Grid container >
-         <Grid item xs={3}>
-        <FormMenu />
-        </Grid>
+      <ul>
         {Object.keys(menu).map((item, index) => (
-            <Grid item xs={2} >
+          <li key={item}>
             <Button
               variant="contained"
               color="primary"
-              Size="medium"
               className={classes.button}
-              key={item}
             >
               {item}
             </Button>
+
             <ul>
               {Object.keys(menu[item]).map((item1, index1) => (
                 <li key={item1}>
-                  {item1}
-                  {[item1.precio]}
+                  {item1} ${menu[item][item1]["precio"]}
                 </li>
               ))}
             </ul>
-            </Grid>
+          </li>
         ))}
-        </Grid>
+      </ul>
     </div>
   );
 };

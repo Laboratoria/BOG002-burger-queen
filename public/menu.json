@@ -27,15 +27,7 @@
         "proteina1": "pollo",
         "proteina2": "carne",
         "proteina3": "vegetariana"
-      },
-      "extras": {
-        "huevo": {
-          "precio": 1
-        },
-        "queso": {
-          "precio": 1
-        }
-      }
+      }     
     },
 
     "acompañamientos": {
