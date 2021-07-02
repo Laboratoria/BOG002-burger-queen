@@ -1,22 +1,17 @@
 
-import { List } from '@material-ui/core';
 
 
 
+import React from 'react'
 
-const FormMenu = (props) => {
-  const {FormMenu}
-    
+export const FormMenu = () => {
+  
   return (
     <div>
-    <List>
-
-    </List>
       
-      </div>
+    </div>
+  )
+}
 
-    
-  );
-};
 
-export default FormMenu;
+

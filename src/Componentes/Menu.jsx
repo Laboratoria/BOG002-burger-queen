@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { Button } from "@material-ui/core";
 import Styles from "../App.Styles";
 
-const Menu = () => {
+const Menu = ({ pedido, setPedido }) => {
   const [menu, setMenu] = useState([]);
   const classes = Styles();
   useEffect(() => {
@@ -13,8 +13,14 @@ const Menu = () => {
       });
   }, []);
 
+  const agregarPedido = (producto) => {
+    let agregar = [...pedido];
+    agregar.push(producto);
+    setPedido(agregar);
+  };
+
   return (
-    <div>
+    <Fragment>
       <ul>
         {Object.keys(menu).map((item, index) => (
           <li key={item}>
@@ -30,13 +36,20 @@ const Menu = () => {
               {Object.keys(menu[item]).map((item1, index1) => (
                 <li key={item1}>
                   {item1} ${menu[item][item1]["precio"]}
+                  <button
+                    onClick={() => {
+                      agregarPedido(item1);
+                    }}
+                  >
+                    Agregar
+                  </button>
                 </li>
               ))}
             </ul>
           </li>
         ))}
       </ul>
-    </div>
+    </Fragment>
   );
 };
 
