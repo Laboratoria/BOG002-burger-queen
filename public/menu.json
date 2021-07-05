@@ -16,18 +16,12 @@
     },
     "almuerzo": {
       "Hamburguesa simple": {
-        "precio": 10,
-        "proteina1": "pollo",
-        "proteina2": "carne",
-        "proteina3": "vegetariana"
+        "precio": 10
       },
 
       "Hamburguesa doble": {
-        "precio": 15,
-        "proteina1": "pollo",
-        "proteina2": "carne",
-        "proteina3": "vegetariana"
-      }     
+        "precio": 15
+      }
     },
 
     "acompañamientos": {
