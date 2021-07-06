@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cocina from "../views/Cocina";
-import Inicio  from "../views/Inicio";
+import Home from "../views/Home"
 import Mesero from "../views/Mesero";
 import NotFound from "../views/NotFound";
 
@@ -11,7 +11,7 @@ export default function AppRouter(){
         <Router>
            
             <Switch>            
-            <Route exact path="/inicio" component={Inicio}/>             
+            <Route exact path="/Home" component={Home}/>             
             <Route path="/mesero" component={Mesero}/>
             <Route path="/cocina" component={Cocina}/>
             <Route path="*" component={NotFound}/>      

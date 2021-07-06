@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import Styles from "../App.Styles";
 import FormMenu from "../Componentes/FormMenu";
-import { Grid } from "@material-ui/core";
+import { Grid, Card, CardContent, List, ListItem } from "@material-ui/core";
 
 const Menu = ({ pedido, setPedido }) => {
   const [menu, setMenu] = useState([]);
@@ -15,20 +15,20 @@ const Menu = ({ pedido, setPedido }) => {
       });
   }, []);
 
-  const agregarPedido = (producto) => {
+  const agregarPedido = (precio, producto) => {
     let agregar = [...pedido];
-    agregar.push(producto);
+    agregar.push({ producto, precio, cantidad: 1 });
     setPedido(agregar);
-    console.log(agregar);
   };
 
   return (
     <div>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <ul>
+          <List>
             {Object.keys(menu).map((item, index) => (
-              <li key={item}>
+              
+              <li>
                 <Button
                   variant="contained"
                   color="primary"
@@ -37,32 +37,31 @@ const Menu = ({ pedido, setPedido }) => {
                   {item}
                 </Button>
 
-                <ul>
+                <Card>
                   {Object.keys(menu[item]).map((item1, index1) => (
-                    <li key={item1}>
+                    <CardContent key={item1}>
                       {item1}
 
-                      <ul>
+                      <List>
                         {Object.keys(menu[item][item1]).map((item2, index2) => (
-                          <li key={item1}>
-                            {menu[item][item1][item2]}
-                            <button
-                            
-                              onClick={() => {
-                                agregarPedido(item1);
-                              }}
-                            >
-                              Agregar
-                            </button>
-                          </li>
+                          <ListItem key={item1}>
+                            ${menu[item][item1][item2]}
+                          </ListItem>
                         ))}
-                      </ul>
-                    </li>
+                      </List>
+                      <button
+                        onClick={() => {
+                          agregarPedido(menu[item][item1]["precio"], item1);
+                        }}
+                      >
+                        Agregar
+                      </button>
+                    </CardContent>
                   ))}
-                </ul>
+                </Card>
               </li>
             ))}
-          </ul>
+          </List>
         </Grid>
         <Grid item xs={6}>
           <FormMenu pedido={pedido} />
