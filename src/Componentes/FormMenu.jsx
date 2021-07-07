@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -8,6 +9,11 @@ import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Styles from "../App.Styles";
 import { Button } from "@material-ui/core";
+import { useFirestore } from "reactfire";
+import firebase from 'firebase/firestore';
+
+
+
 
 function ccyFormat(num) {
   return `${num.toFixed(2)}`;
@@ -21,16 +27,27 @@ function subtotal(producto) {
     .map((item) => priceRow(item.cantidad, item.precio))
     .reduce((suma, i) => suma + i, 0);
 }
+const TAX_RATE = 0.08;  
 
-const TAX_RATE = 0.08;
 
-const FormMenu = ({ pedido }) => {
+const FormMenu = ({ pedido}) => {  
   const classes = Styles();
+  const db= useFirestore()
+  
+  const handleSubmit =(e) => {
+    console.log(pedido);
+    e.preventDefault();
+    db.collection('Pedidos')
+      .doc().set({ 
+      }); 
+       
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <TableContainer component={Paper}>
-          <TextField id="outlined-basic" label="Cliente" variant="outlined" />
+          <TextField id="outlined-basic" label="Cliente" variant="outlined"  />
           <TextField id="outlined-basic" label="Mesa" variant="outlined" />
           <Table>
             <TableHead>
@@ -87,16 +104,17 @@ const FormMenu = ({ pedido }) => {
                     color="primary"
                     className={classes.button}
                   >
-                    Enviar
+                    Cancelar
                   </Button>
                 </TableCell>
                 <TableCell align="right" colSpan={2}>
                   <Button
+                    type="submit"
                     variant="contained"
                     color="primary"
                     className={classes.button}
                   >
-                    Cancelar
+                    Enviar
                   </Button>
                 </TableCell>
               </TableRow>

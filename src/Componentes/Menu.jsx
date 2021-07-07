@@ -20,45 +20,49 @@ const Menu = ({ pedido, setPedido }) => {
     agregar.push({ producto, precio, cantidad: 1 });
     setPedido(agregar);
   };
-
+  const [show, setShow] = useState(false);
+  
   return (
     <div>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <List>
             {Object.keys(menu).map((item, index) => (
-              
-              <li>
+              <li key={item}>
                 <Button
+                  onClick={() => setShow(!show)}
                   variant="contained"
                   color="primary"
                   className={classes.button}
                 >
                   {item}
                 </Button>
+                {show && (
+                  <Card>
+                    {Object.keys(menu[item]).map((item1, index1) => (
+                      <CardContent key={item1}>
+                        {item1}
 
-                <Card>
-                  {Object.keys(menu[item]).map((item1, index1) => (
-                    <CardContent key={item1}>
-                      {item1}
-
-                      <List>
-                        {Object.keys(menu[item][item1]).map((item2, index2) => (
-                          <ListItem key={item1}>
-                            ${menu[item][item1][item2]}
-                          </ListItem>
-                        ))}
-                      </List>
-                      <button
-                        onClick={() => {
-                          agregarPedido(menu[item][item1]["precio"], item1);
-                        }}
-                      >
-                        Agregar
-                      </button>
-                    </CardContent>
-                  ))}
-                </Card>
+                        <List>
+                          {Object.keys(menu[item][item1]).map(
+                            (item2, index2) => (
+                              <ListItem key={item1}>
+                                ${menu[item][item1][item2]}
+                              </ListItem>
+                            )
+                          )}
+                        </List>
+                        <button
+                          onClick={() => {
+                            agregarPedido(menu[item][item1]["precio"], item1);
+                          }}
+                        >
+                          Agregar
+                        </button>
+                      </CardContent>
+                    ))}
+                  </Card>
+                )}
               </li>
             ))}
           </List>
