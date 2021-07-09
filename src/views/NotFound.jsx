@@ -1,10 +1,10 @@
-
+import { Fragment } from "react"
 
 const NotFound = () => {
     return (
-        <div>
+        <Fragment>
             <h1>404 Not Found</h1>
-        </div>
+        </Fragment>
     )
 }
 

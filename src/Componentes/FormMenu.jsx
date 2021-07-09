@@ -10,10 +10,9 @@ import TextField from "@material-ui/core/TextField";
 import Styles from "../App.Styles";
 import { Button } from "@material-ui/core";
 import { useFirestore } from "reactfire";
-import firebase from 'firebase/firestore';
-
-
-
+import firebase from "firebase/firestore";
+import React, { useState, Fragment } from "react";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 function ccyFormat(num) {
   return `${num.toFixed(2)}`;
@@ -21,57 +20,102 @@ function ccyFormat(num) {
 function priceRow(cantidad, unidad) {
   return cantidad * unidad;
 }
+function incre(producto) {
+  producto.cantidad = producto.cantidad + 1;
+}
+function decre(producto) {
+  producto.cantidad = producto.cantidad - 1;
+}
 
 function subtotal(producto) {
   return producto
     .map((item) => priceRow(item.cantidad, item.precio))
     .reduce((suma, i) => suma + i, 0);
 }
-const TAX_RATE = 0.08;  
+const TAX_RATE = 0.08;
 
-
-const FormMenu = ({ pedido}) => {  
+const FormMenu = ({ pedido, setPedido }) => {
   const classes = Styles();
-  const db= useFirestore()
-  
-  const handleSubmit =(e) => {
-    console.log(pedido);
+  const db = useFirestore();
+  const initialValues = { cliente: "", mesa: "" };
+  const [values, setValues] = useState(initialValues);
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    db.collection('Pedidos')
-      .doc().set({ 
-      }); 
-       
-  }
+    db.collection("Pedidos")
+      .doc()
+      .set({
+        ...values,
+        productos: pedido,
+      });
+    setValues(initialValues);
+  };
 
   return (
-    <div>
+    <Fragment>
       <form onSubmit={handleSubmit}>
         <TableContainer component={Paper}>
-          <TextField id="outlined-basic" label="Cliente" variant="outlined"  />
-          <TextField id="outlined-basic" label="Mesa" variant="outlined" />
+          <TextField
+            value={values.cliente}
+            name="cliente"
+            id="outlined-basic"
+            label="Cliente"
+            variant="outlined"
+            onChange={handleChange}
+          ></TextField>
+          <TextField
+            value={values.mesa}
+            name="mesa"
+            id="outlined-basic"
+            label="Mesa"
+            variant="outlined"
+            onChange={handleChange}
+          ></TextField>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell align="center" colSpan={3}>
                   Detalles
                 </TableCell>
-                <TableCell align="right">Precio</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Pedido</TableCell>
                 <TableCell align="right">Precio</TableCell>
-                <TableCell align="right">Unidad</TableCell>
+                <TableCell align="center">Unidad</TableCell>
                 <TableCell align="right">Suma</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {pedido.map((producto) => (
                 <TableRow key={producto}>
-                  <TableCell>{producto.producto}</TableCell>
+                  <TableCell onChange={handleChange}>
+                    {producto.producto}
+                  </TableCell>
                   <TableCell align="right">{producto.precio}</TableCell>
-                  <TableCell align="right">{producto.cantidad}</TableCell>
+                  <TableCell align="right">
+                    <Button size="small" onClick={() => decre(producto)}>
+                      -
+                    </Button>
+                    {producto.cantidad}
+                    <Button size="small" onClick={() => incre(producto)}>
+                      +
+                    </Button>
+                  </TableCell>
+
                   <TableCell align="right">
                     {ccyFormat(priceRow(producto.cantidad, producto.precio))}
+                  </TableCell>
+                  <TableCell>
+                    <Button size="small">
+                      <DeleteIcon />
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -122,7 +166,7 @@ const FormMenu = ({ pedido}) => {
           </Table>
         </TableContainer>
       </form>
-    </div>
+    </Fragment>
   );
 };
 

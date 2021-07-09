@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Fragment } from "react";
 import Styles from "../App.Styles";
 import { Button, Grid } from "@material-ui/core";
 import Header from "../layout/Header";
@@ -6,7 +7,7 @@ import Header from "../layout/Header";
 const Home = () => {
   const classes = Styles();
   return (
-    <div>
+    <Fragment>
       <Header />
       <Grid Container className={classes.root}>
         <Link to="/mesero">
@@ -29,7 +30,7 @@ const Home = () => {
           </Button>
         </Link>
       </Grid>
-    </div>
+    </Fragment>
   );
 };
 

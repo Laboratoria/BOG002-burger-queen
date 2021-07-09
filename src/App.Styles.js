@@ -16,11 +16,33 @@ const Styles = makeStyles((theme) => ({
   },
   Primary: {
     backgroundColor: "#C62020",
+    marginBottom: "12px",
   },
   button: {
     backgroundColor: "#C62020",
     marginTop: "12px",
   },
+  rootC: {
+    maxWidth: 275,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  rootG: {
+    flexGrow: 4,
+    
+  },
+  rootPA:{
+    backgroundColor: '#C62020',
+    color:"#FFFFFF"
+  },
+  rootPT:{
+    backgroundColor: '#FFFFFF',
+   
+  }
+  
+  
   
 }));
 
