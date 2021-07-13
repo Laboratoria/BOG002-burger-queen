@@ -20,12 +20,6 @@ function ccyFormat(num) {
 function priceRow(cantidad, unidad) {
   return cantidad * unidad;
 }
-function incre(producto) {
-  producto.cantidad = producto.cantidad + 1;
-}
-function decre(producto) {
-  producto.cantidad = producto.cantidad - 1;
-}
 
 function subtotal(producto) {
   return producto
@@ -58,6 +52,15 @@ const FormMenu = ({ pedido, setPedido }) => {
     setValues(initialValues);
   };
 
+  function incre(producto) {
+    console.log(producto);
+    producto.cantidad = producto.cantidad + 1;
+  }
+
+  function decre(producto) {
+    console.log(producto);
+    producto.cantidad = producto.cantidad - 1;
+  }
   return (
     <Fragment>
       <form onSubmit={handleSubmit}>
@@ -93,13 +96,11 @@ const FormMenu = ({ pedido, setPedido }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {pedido.map((producto) => (
-                <TableRow key={producto}>
-                  <TableCell onChange={handleChange}>
-                    {producto.producto}
-                  </TableCell>
+              {pedido.map((producto, index) => (
+                <TableRow key={index}>
+                  <TableCell align="left">{producto.producto}</TableCell>
                   <TableCell align="right">{producto.precio}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
                     <Button size="small" onClick={() => decre(producto)}>
                       -
                     </Button>
@@ -108,7 +109,6 @@ const FormMenu = ({ pedido, setPedido }) => {
                       +
                     </Button>
                   </TableCell>
-
                   <TableCell align="right">
                     {ccyFormat(priceRow(producto.cantidad, producto.precio))}
                   </TableCell>

@@ -20,26 +20,30 @@ const Styles = makeStyles((theme) => ({
   },
   button: {
     backgroundColor: "#C62020",
-    marginTop: "12px",
-  },
-  rootC: {
-    maxWidth: 275,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  rootG: {
-    flexGrow: 4,
+    marginBottom: "25px"
     
   },
+  rootC: {   
+    maxWidth: 250,
+    flexGrow: 1,
+    padding: theme.spacing(2), 
+    display: "flex",
+    flexDirection: "column",
+      
+   
+  },  
   rootPA:{
     backgroundColor: '#C62020',
     color:"#FFFFFF"
   },
   rootPT:{
-    backgroundColor: '#FFFFFF',
-   
+    backgroundColor: '#FFFFFF',   
+  },
+  visible:{
+    display: "block"
+  },
+  novisible:{
+    display: "none"
   }
   
   

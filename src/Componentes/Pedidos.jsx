@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { Button } from "@material-ui/core";
+import { Button} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Typography } from "@material-ui/core";
@@ -9,11 +9,16 @@ import { CardActionArea } from "@material-ui/core";
 
 const Pedidos = ({ pedido }) => {
   const classes = Styles();
-  const [estado, setEstado]= useState(false)
-  const { cliente, mesa, productos} = pedido;  
+  const [estado, setEstado] = useState(false);
+  const { cliente, mesa, productos } = pedido;
   return (
     <Fragment>
-      <Card className={`${classes.rootC} ${estado ? classes.rootPA:classes.rootPT}`}>
+      <Card
+        elevetion={2}
+        className={`${classes.rootC} ${
+          estado ? classes.rootPA : classes.rootPT
+        }`}
+      >
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom color="textSecondary">
@@ -23,22 +28,32 @@ const Pedidos = ({ pedido }) => {
               {mesa}
             </Typography>
             <Typography variant="body2" component="p">
-              {productos.map(producto=>(
+              {productos.map((producto) => (
                 <ul>
-                <li>{producto.producto}</li>
-                <li>{producto.cantidad}</li>
+                  <li>{producto.producto}</li>
+                  <li>{producto.cantidad}</li>
                 </ul>
-                
-                
               ))}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" onClick={()=> setEstado(false)}>
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            onClick={() => setEstado(false)}
+            className={classes.button}
+          >
             Terminado
           </Button>
-          <Button onClick={()=> setEstado(true)} size="small" color="primary">
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            onClick={() => setEstado(true)}
+            className={classes.button}
+          >
             Aceptar
           </Button>
         </CardActions>

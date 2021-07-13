@@ -6,6 +6,7 @@ import Pedidos from "../Componentes/Pedidos";
 import firebaseConfig from "../firebaseConfig";
 import firebase from "firebase";
 import "firebase/firestore";
+import { Grid } from "@material-ui/core";
 
 const firestore = firebase.firestore();
 
@@ -24,10 +25,13 @@ const Cocina = () => {
   return (
     <Fragment>
       <Header />
-
+     <Grid container spacing={1}>
       {pedidos.map((pedido) => (
-        <Pedidos key={pedido.id} pedido={pedido} />
+        <Grid item key={pedido.id} xs={6} md={4} lg={3}>
+        <Pedidos pedido={pedido} />
+        </Grid>
       ))}
+      </Grid>
     </Fragment>
   );
 };
