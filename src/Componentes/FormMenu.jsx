@@ -12,7 +12,7 @@ import { Button } from "@material-ui/core";
 import { useFirestore } from "reactfire";
 import firebase from "firebase/firestore";
 import React, { useState, Fragment } from "react";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 function ccyFormat(num) {
   return `${num.toFixed(2)}`;
@@ -33,7 +33,6 @@ const FormMenu = ({ pedido, setPedido }) => {
   const db = useFirestore();
   const initialValues = { cliente: "", mesa: "" };
   const [values, setValues] = useState(initialValues);
-
   const handleChange = (e) => {
     setValues({
       ...values,
@@ -50,17 +49,34 @@ const FormMenu = ({ pedido, setPedido }) => {
         productos: pedido,
       });
     setValues(initialValues);
+    setPedido([]);
   };
 
-  function incre(producto) {
-    console.log(producto);
-    producto.cantidad = producto.cantidad + 1;
+  const handleCancelar = (e) => {    
+    setValues(initialValues);
+    setPedido([]);
+  };
+  function incre(id) {
+    setPedido((prevState) => {
+      return prevState.map((item) => ({
+        ...item,
+        cantidad: item.producto === id ? item.cantidad + 1 : item.cantidad,
+      }));
+    });
   }
 
-  function decre(producto) {
-    console.log(producto);
-    producto.cantidad = producto.cantidad - 1;
+  function decre(id) {
+    setPedido((prevState) => {
+      return prevState.map((item) => ({
+        ...item,
+        cantidad: item.producto === id ? item.cantidad - 1 : item.cantidad,
+      }));
+    });
   }
+  
+  
+
+  
   return (
     <Fragment>
       <form onSubmit={handleSubmit}>
@@ -101,21 +117,26 @@ const FormMenu = ({ pedido, setPedido }) => {
                   <TableCell align="left">{producto.producto}</TableCell>
                   <TableCell align="right">{producto.precio}</TableCell>
                   <TableCell align="center">
-                    <Button size="small" onClick={() => decre(producto)}>
+                    <Button
+                      size="small"
+                      onClick={() => decre(producto.producto)}
+                    >
                       -
                     </Button>
                     {producto.cantidad}
-                    <Button size="small" onClick={() => incre(producto)}>
+                    <Button
+                      size="small"
+                      onClick={() => incre(producto.producto)}
+                    >
                       +
                     </Button>
                   </TableCell>
                   <TableCell align="right">
                     {ccyFormat(priceRow(producto.cantidad, producto.precio))}
                   </TableCell>
-                  <TableCell>
-                    <Button size="small">
-                      <DeleteIcon />
-                    </Button>
+                  <TableCell align="right">
+                    
+                    <DeleteOutlineIcon  />
                   </TableCell>
                 </TableRow>
               ))}
@@ -144,6 +165,7 @@ const FormMenu = ({ pedido, setPedido }) => {
               <TableRow>
                 <TableCell align="right" colSpan={2}>
                   <Button
+                  onClick={()=> handleCancelar()}
                     variant="contained"
                     color="primary"
                     className={classes.button}

@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Fondo from "./Img/Fondo.jpg"
+import Fondo from "../src/Img/Fondo.jpg"
+
+
 
 const Styles = makeStyles((theme) => ({
   root: {
@@ -20,7 +22,8 @@ const Styles = makeStyles((theme) => ({
   },
   button: {
     backgroundColor: "#C62020",
-    marginBottom: "25px"
+    marginBottom: "25px",
+    color: "#ffff"
     
   },
   rootC: {   

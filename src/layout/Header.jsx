@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Toolbar, Typography } from '@material-ui/core'
+import { AppBar,  Toolbar, Typography } from '@material-ui/core'
 import  Styles from "../App.Styles"
 
 
@@ -10,8 +10,7 @@ const Header = () => {
   <Toolbar>    
     <Typography variant="h4">
       Burger Queen
-    </Typography>
-    
+    </Typography>    
   </Toolbar>
 </AppBar>
         
