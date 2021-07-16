@@ -8,11 +8,10 @@ const Menu = ({ pedido, setPedido }) => {
   const [menu, setMenu] = useState([]);
   useEffect(() => {
     fetch("./menu.json")
-      .then((response) => response.json())
+      .then((response) => response.json())      
       .then((data) => setMenu(data));
   }, []);
   const classes = Styles();
-
   return (
     <Fragment>
       <Button
