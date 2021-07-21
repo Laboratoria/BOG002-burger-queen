@@ -6,6 +6,7 @@ import { Typography } from "@material-ui/core";
 import { CardActions } from "@material-ui/core";
 import Styles from "../App.Styles";
 import { CardActionArea } from "@material-ui/core";
+import { Cronometro } from "./Cronometro";
 
 const Pedidos = ({ pedido }) => {
   const classes = Styles();
@@ -16,7 +17,7 @@ const Pedidos = ({ pedido }) => {
       <Card
         elevetion={2}
         className={`${classes.rootC} ${
-          estado ? classes.rootPA : classes.rootPT
+          estado ? classes.rootPT : classes.rootPA
         }`}
       >
         <CardActionArea>
@@ -57,7 +58,10 @@ const Pedidos = ({ pedido }) => {
             Aceptar
           </Button>
         </CardActions>
+        <Cronometro />
       </Card>
+
+      
     </Fragment>
   );
 };

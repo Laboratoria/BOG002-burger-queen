@@ -31,11 +31,11 @@ export const MenuItem = ({ menuItem, titulo, setPedido, pedido }) => {
               <Grid item key={index1} xs={6} md={6} lg={3}>
                 <CardContent key={item1}>
                   {item1}
-                  <List>
+                  
                     {Object.keys(menuItem[item1]).map((item2, index2) => (
-                      <ListItem key={item1}>${menuItem[item1][item2]}</ListItem>
+                      <h4 key={index2}>${menuItem[item1][item2]}</h4>
                     ))}
-                  </List>
+                 
                   <Button
                     className={classes.button}
                     onClick={() => {

@@ -42,14 +42,18 @@ const Styles = makeStyles((theme) => ({
   rootPT:{
     backgroundColor: '#FFFFFF',   
   },
-  visible:{
-    display: "block"
+   
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  novisible:{
-    display: "none"
-  }
-  
-  
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '1px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  } 
   
 }));
 

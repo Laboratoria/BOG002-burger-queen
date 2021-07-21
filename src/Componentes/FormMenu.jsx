@@ -74,7 +74,15 @@ const FormMenu = ({ pedido, setPedido }) => {
     });
   }
   
-  
+  function eliminar(id){
+    setPedido((prevState) => {
+      console.log(prevState);
+      return prevState.filter((item)=>(
+        item.producto !== id
+        ))
+    });
+    
+  }
 
   
   return (
@@ -136,7 +144,7 @@ const FormMenu = ({ pedido, setPedido }) => {
                   </TableCell>
                   <TableCell align="right">
                     
-                    <DeleteOutlineIcon  />
+                    <DeleteOutlineIcon onClick={()=> eliminar(producto.producto)} />
                   </TableCell>
                 </TableRow>
               ))}
