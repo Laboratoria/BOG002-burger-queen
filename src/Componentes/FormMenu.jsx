@@ -47,12 +47,14 @@ const FormMenu = ({ pedido, setPedido }) => {
       .set({
         ...values,
         productos: pedido,
+        estado: false,
+        terminado: false,
       });
     setValues(initialValues);
     setPedido([]);
   };
 
-  const handleCancelar = (e) => {    
+  const handleCancelar = (e) => {
     setValues(initialValues);
     setPedido([]);
   };
@@ -73,18 +75,14 @@ const FormMenu = ({ pedido, setPedido }) => {
       }));
     });
   }
-  
-  function eliminar(id){
+
+  function eliminar(id) {
     setPedido((prevState) => {
       console.log(prevState);
-      return prevState.filter((item)=>(
-        item.producto !== id
-        ))
+      return prevState.filter((item) => item.producto !== id);
     });
-    
   }
 
-  
   return (
     <Fragment>
       <form onSubmit={handleSubmit}>
@@ -108,15 +106,21 @@ const FormMenu = ({ pedido, setPedido }) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align="center" colSpan={3}>
+                <TableCell align="center" colSpan={3} className={classes.text}>
                   Detalles
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Pedido</TableCell>
-                <TableCell align="right">Precio</TableCell>
-                <TableCell align="center">Unidad</TableCell>
-                <TableCell align="right">Suma</TableCell>
+                <TableCell className={classes.text}>Pedido</TableCell>
+                <TableCell align="right" className={classes.text}>
+                  Precio
+                </TableCell>
+                <TableCell align="center" className={classes.text}>
+                  Unidad
+                </TableCell>
+                <TableCell align="right" className={classes.text}>
+                  Suma
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -143,20 +147,24 @@ const FormMenu = ({ pedido, setPedido }) => {
                     {ccyFormat(priceRow(producto.cantidad, producto.precio))}
                   </TableCell>
                   <TableCell align="right">
-                    
-                    <DeleteOutlineIcon onClick={()=> eliminar(producto.producto)} />
+                    <DeleteOutlineIcon
+                      onClick={() => eliminar(producto.producto)}
+                      className={classes.buttonE}
+                    />
                   </TableCell>
                 </TableRow>
               ))}
               <TableRow>
                 <TableCell rowSpan={3} />
-                <TableCell colSpan={2}>Subtotal</TableCell>
+                <TableCell colSpan={2} className={classes.text}>
+                  Subtotal
+                </TableCell>
                 <TableCell align="right">
                   {ccyFormat(subtotal(pedido))}
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>ImpConsumo</TableCell>
+                <TableCell className={classes.text}>ImpConsumo</TableCell>
                 <TableCell align="right">{`${(TAX_RATE * 100).toFixed(
                   0
                 )} %`}</TableCell>
@@ -165,7 +173,9 @@ const FormMenu = ({ pedido, setPedido }) => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell colSpan={2}>Total</TableCell>
+                <TableCell colSpan={2} className={classes.text}>
+                  Total
+                </TableCell>
                 <TableCell align="right">
                   {ccyFormat(subtotal(pedido) * (1 + TAX_RATE))}
                 </TableCell>
@@ -173,7 +183,7 @@ const FormMenu = ({ pedido, setPedido }) => {
               <TableRow>
                 <TableCell align="right" colSpan={2}>
                   <Button
-                  onClick={()=> handleCancelar()}
+                    onClick={() => handleCancelar()}
                     variant="contained"
                     color="primary"
                     className={classes.button}

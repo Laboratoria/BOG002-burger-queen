@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import Styles from "../App.Styles";
-import { CardContent, Card, List, ListItem, Grid } from "@material-ui/core";
+import { CardContent, Card, Grid } from "@material-ui/core";
 
 export const MenuItem = ({ menuItem, titulo, setPedido, pedido }) => {
   const classes = Styles();

@@ -16,7 +16,7 @@ const Cocina = () => {
     firestore.collection("Pedidos").onSnapshot((snap) => {
       const documents = [];
       snap.forEach((doc) => {
-        documents.push({id: doc.id, ...doc.data() });
+        documents.push({ id: doc.id, ...doc.data() });
       });
       setPedidos(documents);
     });
@@ -25,12 +25,12 @@ const Cocina = () => {
   return (
     <Fragment>
       <Header />
-     <Grid container spacing={1}>
-      {pedidos.map((pedido) => (
-        <Grid item key={pedido.id} xs={6} md={4} lg={3}>
-        <Pedidos pedido={pedido} />
-        </Grid>
-      ))}
+      <Grid container spacing={1}>
+        {pedidos.map((pedido) => (
+          <Grid item key={pedido.id} xs={6} md={4} lg={3}>
+            <Pedidos pedido={pedido} setPedidos={setPedidos} />
+          </Grid>
+        ))}
       </Grid>
     </Fragment>
   );
