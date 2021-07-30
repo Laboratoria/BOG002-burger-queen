@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import FormMenu from "../Componentes/FormMenu";
+import FormMenu from "../componentes/FormMenu"
 import { Grid, Button } from "@material-ui/core";
 import { MenuItem } from "./MenuItem";
 import Styles from "../App.Styles";
@@ -7,7 +7,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { EstadoPedidos } from "./EstadoPedidos";
-import Imenu from "../Img/Imenu.png";
+
 
 const Menu = ({ pedido, setPedido }) => {
   const [open, setOpen] = useState(false);
@@ -55,11 +55,7 @@ const Menu = ({ pedido, setPedido }) => {
               <EstadoPedidos />
             </div>
           </Fade>
-        </Modal>
-
-        <Grid align="center">
-          <img src={Imenu} alt="" />
-        </Grid>
+        </Modal>       
 
         <Grid container spacing={1}>
           <Grid item xs={12} md={4} lg={6}>

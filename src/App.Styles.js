@@ -55,17 +55,19 @@ const Styles = makeStyles((theme) => ({
     backgroundColor: "#FFFFFF",
   },
 
-  modal: {
+  modal: {   
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#C62020",
+    width:"80%",
+    height:"80%",
     border: "1px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    alignItems: "center",
+    alignItems: "column",
   },  
 }));
 

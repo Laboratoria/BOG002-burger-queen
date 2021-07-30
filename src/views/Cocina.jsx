@@ -2,7 +2,7 @@
 import Header from "../layout/Header";
 import { Fragment } from "react";
 import { useState, useEffect } from "react";
-import Pedidos from "../Componentes/Pedidos";
+import Pedidos from "../componentes/Pedidos"
 import firebaseConfig from "../firebaseConfig";
 import firebase from "firebase";
 import "firebase/firestore";

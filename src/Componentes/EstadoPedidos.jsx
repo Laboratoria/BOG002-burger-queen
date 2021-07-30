@@ -1,13 +1,8 @@
 import { useState, useEffect, Fragment } from "react";
 import "firebase/firestore";
 import firebase from "firebase";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  Typography,
-  CardActions,
-} from "@material-ui/core";
+import { Grid, CardContent, Typography, Card } from "@material-ui/core";
+import EstadoOrden from "./Estado";
 
 const firestore = firebase.firestore();
 
@@ -25,18 +20,19 @@ export const EstadoPedidos = () => {
 
   return (
     <Fragment>
-      <Card>
-        <CardActions>
-          {pedidos.map((pedido) => (
-            <CardActionArea item key={pedido.id}>
+      <Grid container spacing={1}>
+        {pedidos.map((pedido) => (
+          <Grid item key={pedido.id}>
+            <Card>
               <CardContent>
                 <Typography>{pedido.cliente}</Typography>
                 <Typography>{pedido.mesa}</Typography>
               </CardContent>
-            </CardActionArea>
-          ))}
-        </CardActions>
-      </Card>
+              <EstadoOrden estado={pedido.estado}></EstadoOrden>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Fragment>
   );
 };

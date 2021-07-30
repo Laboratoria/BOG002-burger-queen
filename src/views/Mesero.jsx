@@ -1,4 +1,4 @@
-import Menu from "../Componentes/Menu";
+import Menu from "../componentes/Menu"
 import React, { useState, Fragment } from "react";
 import Header from "../layout/Header";
 
